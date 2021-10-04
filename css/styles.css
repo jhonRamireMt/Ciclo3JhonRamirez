@@ -1,0 +1,51 @@
+*{
+    background-color: antiquewhite;
+}
+.titulo{
+    color:darkblue;
+    text-align: center;
+}
+.subTitulo{
+    padding-left: 20px;
+    font:bold;
+    color: darkblue;
+}
+.tituloLista{
+    color:blue;
+}
+.listasCabin{
+    list-style: none;
+    padding-top: 10px;
+    font-family: 'Courier New', Courier, monospace;  
+}
+.inputCabin{
+    padding-top: 8px;
+    background-color: aliceblue;
+}
+.botonesCabin{
+    padding-top: 10px;
+}
+.divCampos{
+    text-align: center;
+    padding-top: 20px;
+    
+}
+.botonesCabin{
+    padding-top: 20px;
+    text-align: center;
+    padding-left: 40px;
+}
+.botones{
+    background-color:burlywood;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-block: 12px;
+}
+.botonMostrar{
+    background-color:burlywood;
+    text-align: center;
+    padding-block: 5px;
+}
+.divResultado{
+    text-align: center;
+}
