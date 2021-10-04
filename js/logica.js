@@ -157,7 +157,6 @@ function buscarPorId(){
             complete : function(xhr, status) {
                 console.log('Petición realizada codigo: '+xhr.status);
                 limpiarCamposCabin();
-                getDatos()
             }
         });
     }       
@@ -315,7 +314,6 @@ function buscarPorIdCliente(){
             complete : function(xhr, status) {
                 console.log('Petición realizada '+xhr.status);
                 limpiarCamposCliente();
-                getDatosCliente();
             }
         });  
     }     
@@ -464,7 +462,6 @@ function buscarPorIdMensaje(){
             complete : function(xhr, status) {
                 console.log('Petición realizada '+xhr.status);
                 limpiarCamposMensaje();
-                getDatosMensaje();
             }
         });
     }      
