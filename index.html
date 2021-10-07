@@ -2,94 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reto 2</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/logica.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-
+    <link rel="styleshhet" href="css/normalize.css">
+    <title>APP RESERVAR CABAÑA</title>
 </head>
-
 <body>
-<h1 class="titulo"> APPLICACION DE CONSULTAS </h1>
-
-<div class="divCampos">
-    <br>
-    <legend class="subTitulo">CONSULTAR TABLA CABAÑA 
-
-        <div class="divResultado" id="resultadoCabin">
-            <h2 class="subTitulo"></li></h2>
+    <header>
+        <div class="container">
+            <a href="">
+                <img src="img/cabin256.png" class="logo">
+            </a>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Tablas</a>
+                <a href="paginas/cabin.html">Tabla Cabañas</a>
+                <a href="paginas/cliente.html">Tabla Consultar Cliente</a>
+                <a href="paginas/mensaje.html">Tabla Mensaje</a>
+            </nav>
         </div>
-    <li class="listaCabin" >ID:  </li><input class="inputCabin" type="number" id="id" placeholder="id">
-    <br>
-    <li class="listaCabin">MARCA: </li><input class="inputCabin" type="text" id="brand" placeholder="marca">
-    <br>
-    <li class="listaCabin">HABITACIONES: </li><input class="inputCabin" type="number" id="rooms" placeholder="cantidad">
-    <br>
-    <li class="listaCabin">CATEGORIA: </li><input class="inputCabin" type="number" id="category_id" placeholder="categoria">
-    <br>
-    <li class="listaCabin">NOMBRE: </li> <input class="inputCabin" type="text" id="name" placeholder="nombre">
-    <br>
-    </legend>
-    
-</div >
-<div class="botonesCabin">
-    <button class="botones" onclick="guardar()">Guardar</button>
-    <button class="botones" onclick="actualizar()">Actualizar</button>
-    <button class="botones" onclick="eliminar()">Borrar</button>
-    <button class="botones" onclick="buscarPorId()">Buscar ID</button>
-    <button class="botones" onclick="getDatos()"> Mostrar Tabla </button>
-</div>
 
-<div class="divCampos">
-    <br>
-    <legend class="subTitulo">CONSULTAR TABLA CLIENTE
+    </header>
+    <main>
+        <section id="inicio">
+            <img src="img/bannerCabin2.jpg  ">
+            <div class="bloque-inicio">
+                <h1>Panel de Administracion</h1>
+                <p>Creado por: Jhon Alexander Ramirez Bermeo</p>
+            </div>
+        </section>
+        <section id="servicios">
+            <h3 id="subtituloServicios">Tablas</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="columnas">
+                        <div class="bloque-servicio">
+                            <div class="bloque-img-servicio">
+                    
+                                <a class="boton-color" href="paginas/cabin.html">Cabañas <img id="boton-img" src="img/buscar128.png"> </a> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columnas">
+                        <div class="bloque-servicio">
+                            <div class="bloque-img-servicio">
+                                
+                                <a class="boton-color" href="paginas/cliente.html">Cliente <img id="boton-img" src="img/cliente128.png"> </a> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columnas">
+                        <div class="bloque-servicio">
+                            <div class="bloque-img-servicio">
+                                
+                                <a class="boton-color" href="paginas/mensaje.html">Mensaje<img id="boton-img" src="img/mensaje128.png"> </a> 
+                            </div>
+                        </div>
 
-        <div class="divResultado" id="resultadoCliente">
-            <h2 class="subTitulo"></li></h2>
-        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <section id="inscribir">
+
+        </section>
+        <section id="mensaje">
+
+        </section>
+        <section id="Consultar">
+
+        </section>
+        <section id="Galeria">
+
+        </section>
         
-    <li class="listaCabin" >ID:  </li><input class="inputCabin" type="number" id="idCliente" placeholder="id">
-    <br>
-    <li class="listaCabin">NOMBRE: </li><input class="inputCabin" type="text" id="nameCliente" placeholder="nombre">
-    <br>
-    <li class="listaCabin">EMAIL: </li><input class="inputCabin" type="text" id="emailCliente" placeholder="email">
-    <br>
-    <li class="listaCabin">EDAD: </li><input class="inputCabin" type="number" id="ageCliente" placeholder="categoria">
-    <br>
-    </legend>
-    
-</div >
-<div class="botonesCabin">
-    <button class="botones" onclick="guardarCliente()">Guardar</button>
-    <button class="botones" onclick="actualizarCliente()">Actualizar</button>
-    <button class="botones" onclick="eliminarCliente()">Borrar</button>
-    <button class="botones" onclick="buscarPorIdCliente()">Buscar ID</button>
-    <button class="botones" onclick="getDatosCliente()"> Mostrar Tabla </button>
-    
-</div>
 
-<div class="divCampos">
-    <br>
-    <legend class="subTitulo">CONSULTAR TABLA MENSAJE
+    </main>
+    <footer>
 
-        <div class="divResultado" id="resultadoMensaje">
-            <h2 class="subTitulo"></li></h2>
-        </div>
-        
-    <li class="listaCabin" >ID:  </li><input class="inputCabin" type="number" id="idMessage" placeholder="id">
-    <br>
-    <li class="listaCabin">MENSAJE DE TEXTO: </li><input class="inputCabin" type="text" id="message" placeholder="nombre">
-    <br>
-    </legend>
+    </footer>
     
-</div >
-<div class="botonesCabin">
-    <button class="botones" onclick="guardarMensaje()">Guardar</button>
-    <button class="botones" onclick="actualizarMensaje()">Actualizar</button>
-    <button class="botones" onclick="eliminarMensaje()">Borrar</button>
-    <button class="botones" onclick="buscarPorIdMensaje()">Buscar ID</button>
-    <button class="botones" onclick="getDatosMensaje()"> Mostrar Tabla </button>
-    
-</div>
 </body>
 </html>

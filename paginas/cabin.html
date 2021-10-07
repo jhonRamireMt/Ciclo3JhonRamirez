@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSULTA. CABAÑA</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/Ciclo3JhonRamirez/js/logica.js"></script>
+    <link rel="stylesheet" href="/Ciclo3JhonRamirez/css/styles.css">
+</head>
+<body>
+    <h1 class="titulo"> APPLICACION DE CONSULTAS </h1>
+
+<div class="divCampos">
+    <br>
+    <legend class="subTitulo">CONSULTAR TABLA CABAÑA 
+
+        <div class="divResultado" id="resultadoCabin">
+            <h2 class="subTitulo"></li></h2>
+        </div>
+    <li class="listaCabin" >ID:  </li><input class="inputCabin" type="number" id="id" placeholder="id">
+    <br>
+    <li class="listaCabin">MARCA: </li><input class="inputCabin" type="text" id="brand" placeholder="marca">
+    <br>
+    <li class="listaCabin">HABITACIONES: </li><input class="inputCabin" type="number" id="rooms" placeholder="cantidad">
+    <br>
+    <li class="listaCabin">CATEGORIA: </li><input class="inputCabin" type="number" id="category_id" placeholder="categoria">
+    <br>
+    <li class="listaCabin">NOMBRE: </li> <input class="inputCabin" type="text" id="name" placeholder="nombre">
+    <br>
+    </legend>
+    
+</div >
+<div class="botonesCabin">
+    <button class="botones" onclick="guardar()">Guardar</button>
+    <button class="botones" onclick="actualizar()">Actualizar</button>
+    <button class="botones" onclick="eliminar()">Borrar</button>
+    <button class="botones" onclick="buscarPorId()">Buscar ID</button>
+    <button class="botones" onclick="getDatos()"> Mostrar Tabla </button>
+</div>
+    
+</body>
+</html>
