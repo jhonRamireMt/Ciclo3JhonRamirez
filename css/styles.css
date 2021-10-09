@@ -13,8 +13,9 @@ header .container{
     padding-left: 15px;
 }
 header .container .logo{
-    width: 100px;
+    width: 75px;
 }
+
 a{
     display: inline-block; /*Display cambia el comportamiento de los elementos*/
 }
@@ -32,8 +33,8 @@ header{
     z-index: 2; /* coloca el bannerpor debajo de los elementos*/
     background-color:darkred;
     width: 100%;
-
 }
+
 body{
     font-family: "Roboto"; /* familia de fuentes traida desde gogle font*/
 }
@@ -97,7 +98,7 @@ body{
 
 #inicio .bloque-inicio{
     position: absolute; /*Se usa absoluto para que el bloque quede flotando y pueda ser ubicado mediante atributos*/
-    top: 22%;
+    top: 18%;
     left: 50%;
     width: 700px;
     text-align: center;
@@ -106,7 +107,7 @@ body{
 
 #inicio .bloque-inicio h1{
     color: white;
-    font-size: 54px;
+    font-size: 64px;
 }
 #inicio .bloque-inicio p{
     color: white;
@@ -131,20 +132,20 @@ body{
 
 #subtituloServicios{
     font-family: "Roboto";
-    font-size: 24;
+    font-size: 36px;
     color: white;
     text-align: center;
-    padding-bottom: 30px;
 }
 #servicios .columnas{
     display: inline-block; /* coloca los bloques de botones en linea*/
-    width: 350px;
     align-content: center;
-    margin-top: 0;
 }
-.columnas .boton-color #boton-img{
+.columnas .bloque-servicio{
     justify-content: space-between; 
     background-color: darkred;
+    align-items: center;
+    margin: 75px;
+    padding-left: 30px;
 }
 .columnas a{
     background-color: darkred   ;

@@ -12,7 +12,7 @@ function getDatos(){
             alert('ha sucedido un problema, '+xhr.status);
         },
         complete : function(xhr, status) {
-            console.log('Datos Obtenidos correctamente code: '+xhr.status);
+            //alert('Datos Obtenidos correctamente code: '+xhr.status);
         },
         success : function(json) {
             $("#resultadoCabin").empty();
@@ -55,8 +55,7 @@ function guardar(){
             error : function(xhr, status) {         
             },
             complete : function(xhr, status) {
-            console.log('Datos guardados Correctamente, codigo: '+xhr.status);
-            alert('Datos guardados Correctamente');
+            alert('Datos guardados Correctamente, codigo: '+xhr.status);
             limpiarCamposCabin();
             getDatos()
             }
@@ -84,17 +83,17 @@ function actualizar(){
             url:"https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/cabin/cabin",
             type:"PUT",
             data:dataToSend,
-            contentType:"application/JSON",
-            datatype:"JSON",
-            success:function(respuesta){
-               // $("#resultado").empty();
+            contentType:"application/json",
+            datatype:"json",
+            success:function(xhr, status){
+            },
+            complete : function(xhr, status) {
+                alert('Datos Actualizados Correctamente '+xhr.status);
                 $("#id").val("");
                 $("#brand").val("");
                 $("#rooms").val("");
                 $("#category_id").val("");
                 $("#name").val("");
-                console.log('codigo: '+xhr.status);
-                alert('Datos Actualizados Correctamente');
                 limpiarCamposCabin();
                 getDatos()
             }
@@ -210,7 +209,7 @@ function getDatosCliente(){
  */
 function guardarCliente(){
 
-    if($("#idCliente").val() =="" || $("#nameCliente").val() || $("#emailCliente").val() =="" || $("#ageCliente").val() == "" ){
+    if($("#idCliente").val() =="" || $("#nameCliente").val() =="" || $("#emailCliente").val() =="" || $("#ageCliente").val() == "" ){
         alert("Todos los campos son obligatorios")
     }else{
         $.ajax({    
@@ -241,7 +240,7 @@ function guardarCliente(){
  * Actualizar datos Tabla cliente
  */
 function actualizarCliente(){
-    if($("#idCliente").val() =="" || $("#nameCliente").val() || $("#emailCliente").val() =="" || $("#ageCliente").val() == "" ){
+    if($("#idCliente").val() =="" || $("#nameCliente").val()=="" || $("#emailCliente").val() =="" || $("#ageCliente").val() == "" ){
         alert("Todos los campos son obligatorios")
     }else{
         let myData={
