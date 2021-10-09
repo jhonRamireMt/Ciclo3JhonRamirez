@@ -134,7 +134,7 @@ body{
     font-size: 24;
     color: white;
     text-align: center;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 #servicios .columnas{
     display: inline-block; /* coloca los bloques de botones en linea*/

@@ -3,6 +3,7 @@
  * Obtener datos Tabla CABAÑA
  */
 function getDatos(){
+    
     $.ajax({    
         url : 'https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/cabin/cabin',
         type : 'GET',
@@ -36,60 +37,69 @@ function getDatos(){
  */
 function guardar(){
     
-    $.ajax({    
-        url : 'https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/cabin/cabin',
-        data : { 
-            id: $("#id").val(),
-            brand: $("#brand").val(),
-            rooms: $("#rooms").val(),
-            category_id: $("#category_id").val(),
-            name: $("#name").val() },
-        type : 'POST',
-        dataType: 'json',
-        success : function(json, textStatus, xhr) {
-        },
-        error : function(xhr, status) {         
-        },
-        complete : function(xhr, status) {
-        console.log('Datos guardados Correctamente, codigo: '+xhr.status);
-        alert('Datos guardados Correctamente, clic en mostrar para actualizar cambios');
-        limpiarCamposCabin();
-        getDatos()
-        }
-    });
+    if($("#id").val() =="" || $("#brand").val() =="" || $("#rooms").val() =="" || $("#category_id").val() == "" || $("#name").val() == ""){
+        alert("Todos los campos son obligatorios")
+    }else{
+        $.ajax({    
+            url : 'https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/cabin/cabin',
+            data : { 
+                id: $("#id").val(),
+                brand: $("#brand").val(),
+                rooms: $("#rooms").val(),
+                category_id: $("#category_id").val(),
+                name: $("#name").val() },
+            type : 'POST',
+            dataType: 'json',
+            success : function(json, textStatus, xhr) {
+            },
+            error : function(xhr, status) {         
+            },
+            complete : function(xhr, status) {
+            console.log('Datos guardados Correctamente, codigo: '+xhr.status);
+            alert('Datos guardados Correctamente');
+            limpiarCamposCabin();
+            getDatos()
+            }
+        });
+    } 
 }
 
 /**
  * Actualizar datos Tabla CABAÑA
  */
 function actualizar(){
-    let myData={
-        id:$("#id").val(),
-        brand:$("#brand").val(),
-        rooms:$("#rooms").val(),
-        category_id:$("#category_id").val(),
-        name:$("#name").val(),
-    };
-    let dataToSend=JSON.stringify(myData);
-    $.ajax({
-        url:"https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/cabin/cabin",
-        type:"PUT",
-        data:dataToSend,
-        contentType:"application/JSON",
-        datatype:"JSON",
-        success:function(respuesta){
-           // $("#resultado").empty();
-            $("#id").val("");
-            $("#brand").val("");
-            $("#rooms").val("");
-            $("#category_id").val("");
-            $("#name").val("");
-            console.log('codigo: '+xhr.status);
-            alert('Datos Actualizados Correctamente, clic en mostrar para ver tabla');
-            limpiarCamposCabin();
-            getDatos()
-        }
-    });
+
+    if($("#id").val() =="" || $("#brand").val() == "" || $("#rooms").val() =="" || $("#category_id").val() == "" || $("#name").val() == ""){
+        alert("Todos los campos son obligatorios")
+    }else{
+        let myData={
+            id:$("#id").val(),
+            brand:$("#brand").val(),
+            rooms:$("#rooms").val(),
+            category_id:$("#category_id").val(),
+            name:$("#name").val(),
+        };
+        let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url:"https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/cabin/cabin",
+            type:"PUT",
+            data:dataToSend,
+            contentType:"application/JSON",
+            datatype:"JSON",
+            success:function(respuesta){
+               // $("#resultado").empty();
+                $("#id").val("");
+                $("#brand").val("");
+                $("#rooms").val("");
+                $("#category_id").val("");
+                $("#name").val("");
+                console.log('codigo: '+xhr.status);
+                alert('Datos Actualizados Correctamente');
+                limpiarCamposCabin();
+                getDatos()
+            }
+        });
+    }  
 }
 
 /**
@@ -98,7 +108,7 @@ function actualizar(){
 function eliminar(){
     let idElemento = document.getElementById("id").value;
     if(validarId(idElemento)){
-        alert("Debe ingresar un ID para poder Eliminar");
+        alert("Debe ingresar el ID que desea borrar");
     }else{
         let myData={
             id:idElemento
@@ -112,7 +122,7 @@ function eliminar(){
             datatype:"JSON",
             success:function(respuesta){
                 $("#resultado").empty();
-                alert('Elemento borrado Correctamente, clic en mostrar para ver tabla');
+                alert('Elemento borrado Correctamente');
                 limpiarCamposCabin();
                 getDatos()
             }
@@ -146,6 +156,7 @@ function buscarPorId(){
                     filas +="<tr><th>NOMBRE:<td>"+json.items[0].name
                     
                     $("#resultadoCabin").append(tabla + filas+"</center>")  
+                    alert("Elemento encontrado satisfactoriamente")
                 }
                 else{
                     alert("Elemento con Id: "+idElemento+", no existe")
@@ -198,57 +209,65 @@ function getDatosCliente(){
  * Guardar datos Tabla cliente
  */
 function guardarCliente(){
-    
-    $.ajax({    
-        url : 'https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
-        data : { 
-            id: $("#idCliente").val(),
-            name: $("#nameCliente").val(),
-            email: $("#emailCliente").val(),
-            age: $("#ageCliente").val()},
-            type : 'POST',
-            dataType: 'json',
-        success : function(json, textStatus, xhr) {
-        },
-        error : function(xhr, status) {         
-        },
-        complete : function(xhr, status) {
-        console.log('Petición realizada '+xhr.status);
-        console.log('Datos guardados Correctamente, codigo: '+xhr.status);
-        alert('Datos guardados Correctamente, clic en mostrar para actualizar cambios');
-        limpiarCamposCliente();
-        getDatosCliente();
-        }
-    });
+
+    if($("#idCliente").val() =="" || $("#nameCliente").val() || $("#emailCliente").val() =="" || $("#ageCliente").val() == "" ){
+        alert("Todos los campos son obligatorios")
+    }else{
+        $.ajax({    
+            url : 'https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+            data : { 
+                id: $("#idCliente").val(),
+                name: $("#nameCliente").val(),
+                email: $("#emailCliente").val(),
+                age: $("#ageCliente").val()},
+                type : 'POST',
+                dataType: 'json',
+            success : function(json, textStatus, xhr) {
+            },
+            error : function(xhr, status) {         
+            },
+            complete : function(xhr, status) {
+            console.log('Petición realizada '+xhr.status);
+            console.log('Datos guardados Correctamente, codigo: '+xhr.status);
+            alert('Datos guardados Correctamente');
+            limpiarCamposCliente();
+            getDatosCliente();
+            }
+        });
+    } 
 }
 
 /**
  * Actualizar datos Tabla cliente
  */
 function actualizarCliente(){
-    let myData={
-        id:$("#idCliente").val(),
-        name:$("#nameCliente").val(),
-        email:$("#emailCliente").val(),
-        age:$("#ageCliente").val(),
-    };
-    let dataToSend=JSON.stringify(myData);
-    $.ajax({
-        url:"https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client",
-        type:"PUT",
-        data:dataToSend,
-        contentType:"application/JSON",
-        datatype:"JSON",
-        success:function(respuesta){
-            $("#idCliente").val("");
-            $("#nameCliente").val("");
-            $("#emailCliente").val("");
-            $("#ageCliente").val("");
-            alert('Datos Actualizados Correctamente, clic en mostrar para ver tabla');
-            limpiarCamposCliente();
-            getDatosCliente();
-        }
-    });
+    if($("#idCliente").val() =="" || $("#nameCliente").val() || $("#emailCliente").val() =="" || $("#ageCliente").val() == "" ){
+        alert("Todos los campos son obligatorios")
+    }else{
+        let myData={
+            id:$("#idCliente").val(),
+            name:$("#nameCliente").val(),
+            email:$("#emailCliente").val(),
+            age:$("#ageCliente").val(),
+        };
+        let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url:"https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client",
+            type:"PUT",
+            data:dataToSend,
+            contentType:"application/JSON",
+            datatype:"JSON",
+            success:function(respuesta){
+                $("#idCliente").val("");
+                $("#nameCliente").val("");
+                $("#emailCliente").val("");
+                $("#ageCliente").val("");
+                alert('Datos Actualizados Correctamente');
+                limpiarCamposCliente();
+                getDatosCliente();
+            }
+        });
+    }  
 }
 
 /**
@@ -257,7 +276,7 @@ function actualizarCliente(){
 function eliminarCliente(){
     let idElemento = document.getElementById("idCliente").value;
     if(validarId(idElemento)){
-        alert("Debe ingresar un ID para poder Eliminar");
+        alert("Debe ingresar el ID a borrar");
     }else{
         let myData={
             id:idElemento
@@ -271,7 +290,7 @@ function eliminarCliente(){
             datatype:"JSON",
             success:function(respuesta){
                 $("#resultado").empty();
-                alert("Elemento borrado Correctamente, clic en mostrar para ver cambios en la tabla")
+                alert("Elemento borrado Correctamente")
                 limpiarCamposCliente();
                 getDatosCliente();
             }
@@ -303,9 +322,10 @@ function buscarPorIdCliente(){
                     filas +="<tr><th>EMAIL:<td>"+json.items[0].email
                     filas +="<tr><th>EDAD:<td>"+json.items[0].age
                     $("#resultadoCliente").append(tabla + filas+"</center>")  
+                    alert("Elemento encontrado satisfactoriamente");
                 }
                 else{
-                    alert("Elemento con id: "+idElemento+", no existe")
+                    alert("Elemento con id: "+idElemento+", no existente")
                 }
             },
             error : function(xhr, status) {
@@ -354,50 +374,57 @@ function getDatosMensaje(){
  * Guardar datos Tabla MENSAJE
  */
 function guardarMensaje(){
-    
-    $.ajax({    
-        url : 'https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
-        data : { 
-            id: $("#idMessage").val(),
-            messagetext: $("#message").val()},
-            type : 'POST',
-            dataType: 'json',
-        success : function(json, textStatus, xhr) {
-        },
-        error : function(xhr, status) {         
-        },
-        complete : function(xhr, status) {
-        console.log('Petición realizada '+xhr.status);
-        alert('Datos guardados Correctamente, clic en mostrar para ver tabla');
-        limpiarCamposMensaje();
-        getDatosMensaje();
-        }
-    });
+    if($("#idMessage").val() =="" || $("#message").val() == ""){
+        alert("Todos los campos son obligatorios")
+    }else{
+        $.ajax({    
+            url : 'https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
+            data : { 
+                id: $("#idMessage").val(),
+                messagetext: $("#message").val()},
+                type : 'POST',
+                dataType: 'json',
+            success : function(json, textStatus, xhr) {
+            },
+            error : function(xhr, status) {         
+            },
+            complete : function(xhr, status) {
+            console.log('Petición realizada '+xhr.status);
+            alert('Datos guardados Correctamente');
+            limpiarCamposMensaje();
+            getDatosMensaje();
+            }
+        });
+    } 
 }
 
 /**
  * Actualizar datos Tabla MENSAJE
  */
 function actualizarMensaje(){
-    let myData={
-        id:$("#idMessage").val(),
-        messagetext:$("#message").val(),
-    };
-    let dataToSend=JSON.stringify(myData);
-    $.ajax({
-        url:"https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
-        type:"PUT",
-        data:dataToSend,
-        contentType:"application/JSON",
-        datatype:"JSON",
-        success:function(respuesta){
-            $("#idMessage").val("");
-            $("#message").val("");
-            alert('Datos Actualizados Correctamente, clic en mostrar para ver tabla');
-            limpiarCamposMensaje();
-            getDatosMensaje();
-        }
-    });
+    if($("#idMessage").val() =="" || $("#message").val() == ""){
+        alert("Todos los campos son obligatorios")
+    }else{
+        let myData={
+            id:$("#idMessage").val(),
+            messagetext:$("#message").val(),
+        };
+        let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url:"https://g5effebe5eb1c3b-dbcabin.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
+            type:"PUT",
+            data:dataToSend,
+            contentType:"application/JSON",
+            datatype:"JSON",
+            success:function(respuesta){
+                $("#idMessage").val("");
+                $("#message").val("");
+                alert('Datos Actualizados Correctamente');
+                limpiarCamposMensaje();
+                getDatosMensaje();
+            }
+        });
+    }   
 }
 
 /**
@@ -420,7 +447,7 @@ function eliminarMensaje(){
             datatype:"JSON",
             success:function(respuesta){
                 $("#resultado").empty();
-                alert("Elemento borrado Correctamente, clic en mostrar para ver cambios en la tabla");
+                alert("Elemento borrado Correctamente");
                 limpiarCamposMensaje();
                 getDatosMensaje();
             }
@@ -447,10 +474,11 @@ function buscarPorIdMensaje(){
                 filas =""
                 if(json.items.length > 0){
                     console.log(json)
-                    $("#resultado").empty();
+                    $("#resultadoMensaje").empty();
                     filas +="<tr><th> ID:<td>"+json.items[0].id  
                     filas +="<tr><th>NOMBRE:<td>"+json.items[0].messagetext
-                    $("#resultadoMensaje").append(tabla + filas+"</center>")  
+                    $("#resultadoMensaje").append(tabla + filas+"</center>") 
+                    alert("Elemento encontrado satisfactoriamente"); 
                 }
                 else{
                     alert("Elemento con id: "+idElemento+", no existe")
