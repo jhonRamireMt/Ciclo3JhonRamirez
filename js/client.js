@@ -1,6 +1,6 @@
 function obtenerClientes(){
     $.ajax({
-        url: 'http://localhost:8080/api/Client/all',
+        url: 'http://144.22.57.2:8080/api/Client/all',
         type: 'GET',
         dataType : 'json',
         success:function(json, status){
@@ -13,7 +13,7 @@ function obtenerClientes(){
 function autoInClient(){
     /* Este ajax renderiza el select de eliminar cliente*/
     $.ajax({
-        url: 'http://localhost:8080/api/Client/all',
+        url: 'http://144.22.57.2:8080/api/Client/all',
         type : 'GET',
         dataType:'json',
         success:function(json,){
@@ -27,7 +27,7 @@ function autoInClient(){
 
     /*Este ajasx redenriza el select de modificar cliente */
     $.ajax({
-        url: 'http://localhost:8080/api/Client/all',
+        url: 'http://144.22.57.2:8080/api/Client/all',
         type : 'GET',
         dataType:'json',
         success:function(json,){
@@ -60,15 +60,15 @@ function eliminarCliente(){
     if(desicion){
         let data = $("#select-delClient").val();
         $.ajax({
-            url: 'http://localhost:8080/api/Client/'+data,
+            url: 'http://144.22.57.2:8080/api/Client/'+data,
             type:"DELETE",
             success:function(xhr,status){
                 alert("Cliente Borrado ");
-                window.location.reload();
+                
             }
         })
-    }
-    window.location.reload(); 
+    } 
+    window.location.reload();
 }
 
 function crearCliente(){
@@ -89,12 +89,12 @@ function crearCliente(){
             $.ajax({    
                 contentType:"application/json",
                 data : dataToSend,
-                url : 'http://localhost:8080/api/Client/save',
+                url : 'http://144.22.57.2:8080/api/Client/save',
                 type : 'POST',
                 dataType: 'json',
                 success : function(json, status, xhr) {
                     alert("Cliente creado correctamente " + xhr.status);
-                    window.location.reload();   
+ 
                 },
                 error : function(xhr, status) {        
                     alert("Error al crear cliente: "+xhr.status) 
@@ -126,12 +126,12 @@ function actualizarCliente(){
         $.ajax({    
             contentType:"application/json",
             data : dataToSend,
-            url : 'http://localhost:8080/api/Client/update',
+            url : 'http://144.22.57.2:8080/api/Client/update',
             type : 'PUT',
             dataType: 'json',
             success : function(json, status, xhr) {
                 alert("Cliente Modificado correctamente " + xhr.status);  
-                window.location.reload();    
+                   
             },
             error : function(xhr, status) {        
                 alert("Error al modificar cliente: "+xhr.status); 
@@ -141,5 +141,5 @@ function actualizarCliente(){
  
         });
     }
-    
+    window.location.reload();
 }

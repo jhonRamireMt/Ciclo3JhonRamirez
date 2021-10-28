@@ -1,6 +1,6 @@
 function obtenerReservas(){
     $.ajax({
-        url: 'http://localhost:8080/api/Reservation/all',
+        url: 'http://144.22.57.2:8080/api/Reservation/all',
         type: 'GET',
         dataType : 'json',
         success:function(json, status){
@@ -32,7 +32,7 @@ function setTableReserva(json){
 function autoInicioClient(){
     console.log("se esta ejecuntando el auto inicio...CLIENTE")
     $.ajax({
-        url: 'http://localhost:8080/api/Client/all',
+        url: 'http://144.22.57.2:8080/api/Client/all',
         type: 'GET',
         dataType: 'json',
         success:function(json){
@@ -50,7 +50,7 @@ function autoInicioClient(){
 function autoInicioCabin(){
     console.log("se esta ejecuntando el auto inicio...CABAÑA")
     $.ajax({
-        url: 'http://localhost:8080/api/Cabin/all',
+        url: 'http://144.22.57.2:8080/api/Cabin/all',
         type: 'GET',
         dataType: 'json',
         success:function(json){
@@ -68,7 +68,7 @@ function autoInicioCabin(){
 function selectEliminarReserva(){
     console.log("se esta ejecuntando el auto inicio...eliminar reserva")
     $.ajax({
-        url: 'http://localhost:8080/api/Reservation/all',
+        url: 'http://144.22.57.2:8080/api/Reservation/all',
         type: 'GET',
         dataType: 'json',
         success:function(json){
@@ -86,7 +86,7 @@ function selectEliminarReserva(){
 function selectModificarReserva(){
     console.log("se esta ejecuntando el auto inicio...modificar reserva")
     $.ajax({
-        url: 'http://localhost:8080/api/Reservation/all',
+        url: 'http://144.22.57.2:8080/api/Reservation/all',
         type: 'GET',
         dataType: 'json',
         success:function(json){
@@ -119,12 +119,12 @@ function modificarReservacion(){
             $.ajax({    
                 contentType:"application/json",
                 data : dataToSend,
-                url : 'http://localhost:8080/api/Reservation/update',
+                url : 'http://144.22.57.2:8080/api/Reservation/update',
                 type : 'PUT',
                 dataType: 'json',
                 success : function(json, status, xhr) {
                     alert("Reserva Modificada Correctamente " + xhr.status);
-                    window.location.reload();      
+                         
                 },
                 error : function(xhr, status) {        
                     alert("Debe existir previamente en el sistema un cliente y una cabaña para poder realizar una reservacion: ") 
@@ -135,6 +135,7 @@ function modificarReservacion(){
         }
         
     }
+    window.location.reload(); 
 }
 
 function eliminarReserva(){
@@ -142,14 +143,15 @@ function eliminarReserva(){
     if(desicion){
         let myData = $("#select-delReserva").val();
         $.ajax({
-            url: 'http://localhost:8080/api/Reservation/'+myData,
+            url: 'http://144.22.57.2:8080/api/Reservation/'+myData,
             type:"DELETE",
             success:function(xhr, status){
                 alert("Reservacion Eliminada");
-                window.location.reload();
+                
             }
         })
     }
+    window.location.reload();
 }
 
 
@@ -172,12 +174,12 @@ function crearReservacion(){
             $.ajax({    
                 contentType:"application/json",
                 data : dataToSend,
-                url : 'http://localhost:8080/api/Reservation/save',
+                url : 'http://144.22.57.2:8080/api/Reservation/save',
                 type : 'POST',
                 dataType: 'json',
                 success : function(json, status, xhr) {
                     alert("Reserva creada correctamente " + xhr.status);
-                    window.location.reload();      
+                          
                 },
                 error : function(xhr, status) {        
                     alert("Debe existir previamente en el sistema un cliente y una cabaña para poder realizar una reservacion: ") 
@@ -188,4 +190,5 @@ function crearReservacion(){
             });
         }  
     }
+    window.location.reload();
 }

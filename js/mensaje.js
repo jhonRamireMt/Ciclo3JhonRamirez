@@ -2,7 +2,7 @@
 
 function obtenerMensajes(){
     $.ajax({
-        url: 'http://localhost:8080/api/Message/all',
+        url: 'http://144.22.57.2:8080/api/Message/all',
         type: 'GET',
         dataType : 'json',
         success:function(json, status){
@@ -31,7 +31,7 @@ function setTableMensaje(json){
 function autoInicioCabin(){
     console.log("se esta ejecuntando el auto inicio...crear mensaje")
     $.ajax({
-        url: 'http://localhost:8080/api/Cabin/all',
+        url: 'http://144.22.57.2:8080/api/Cabin/all',
         type: 'GET',
         dataType: 'json',
         success:function(json){
@@ -50,7 +50,7 @@ function autoInicioCabin(){
 function autoInicioClient(){
     console.log("se esta ejecuntando el auto inicio...CLIENTE")
     $.ajax({
-        url: 'http://localhost:8080/api/Client/all',
+        url: 'http://144.22.57.2:8080/api/Client/all',
         type: 'GET',
         dataType: 'json',
         success:function(json){
@@ -69,7 +69,7 @@ function selectEliminarMensaje(){
     /* Esta funciona permitira traer los mensajes y borrar el mensaje seleccionado*/
     console.log("se esta ejecuntando el auto inicio...borrar mensaje")
     $.ajax({
-        url: 'http://localhost:8080/api/Message/all',
+        url: 'http://144.22.57.2:8080/api/Message/all',
         type: 'GET',
         dataType: 'json',
         success:function(json){
@@ -88,7 +88,7 @@ function selectModificarMensaje(){
     /* Esta funciona permitira traer los mensajes y borrar el mensaje seleccionado*/
     console.log("se esta ejecuntando el auto inicio...modificar mensaje")
     $.ajax({
-        url: 'http://localhost:8080/api/Message/all',
+        url: 'http://144.22.57.2:8080/api/Message/all',
         type: 'GET',
         dataType: 'json',
         success:function(json){
@@ -106,19 +106,19 @@ function selectModificarMensaje(){
 function eliminarMensaje(){
     let desicion = confirm("Se eliminara el Mensaje Seleccionado, Desea Continuar ?")
     if(desicion){
-        let idMessage = $("#select-delMensaje").val()    
-    $.ajax({
-        url: 'http://localhost:8080/api/Message/'+idMessage,
-        type:"DELETE",
-        contentType:"application/json",
-        dataType:"json",
-        success:function(xhr, status){
-            alert("Mensaje Borrado !!");
-            window.location.reload();
-        }
-    })
+        let idMessage = $("#select-delMensaje").val() 
+        $.ajax({
+            url: 'http://144.22.57.2:8080/api/Message/'+idMessage,
+            type:"DELETE",
+            contentType:"application/json",
+            dataType:"json",
+            success:function(xhr, status){
+                alert("Mensaje Borrado !!");
+                
+            }
+        })   
     }
-    
+    window.location.reload();
 }
 
 function modificarMensaje(){
@@ -136,16 +136,17 @@ function modificarMensaje(){
             $.ajax({
                 data: dataToSend,
                 type:"PUT",
-                url: 'http://localhost:8080/api/Message/update',
+                url: 'http://144.22.57.2:8080/api/Message/update',
                 contentType:"application/json",
                 dataType:"json",
                 success:function(xhr,status){
                     alert("Mensaje Modificado");
-                    window.location.reload();
+                    
                 }
             })
         }
     }
+    window.location.reload();
 }
 
 
@@ -173,7 +174,7 @@ function crearMensaje(){
                 dataType: 'json',
                 success : function(json, status, xhr) {
                     alert("Mensje enviado correctamente " + xhr.status);
-                    window.location.reload();      
+                          
                 },
                 error : function(xhr, status) {        
                     alert("Debe exixtir un cliente y una cabaña en el sistema para enviar un mensaje "+xhr.status) 
@@ -184,4 +185,5 @@ function crearMensaje(){
             });
         }  
     }
+    window.location.reload();
 }

@@ -1,6 +1,6 @@
 function obtenerCategorias(){
     $.ajax({
-        url: 'http://localhost:8080/api/Category/all',
+        url: 'http://144.22.57.2:8080/api/Category/all',
         type : 'GET',
         dataType : 'json',
         success : function(json, xhr, status){
@@ -27,7 +27,7 @@ function setTableCategory(json){
 
 function autoInicioSelectEliminar(){
     $.ajax({
-        url: 'http://localhost:8080/api/Category/all',
+        url: 'http://144.22.57.2:8080/api/Category/all',
         type : 'GET',
         dataType:'json',
         success:function(json,){
@@ -41,7 +41,7 @@ function autoInicioSelectEliminar(){
 
 function autoInicioSelectActualizar(){
     $.ajax({
-        url: 'http://localhost:8080/api/Category/all',
+        url: 'http://144.22.57.2:8080/api/Category/all',
         type : 'GET',
         dataType:'json',
         success:function(json,){
@@ -71,12 +71,12 @@ function crearCategoria(){
             $.ajax({    
                 contentType:"application/json",
                 data : dataToSend,
-                url : 'http://localhost:8080/api/Category/save',
+                url : 'http://144.22.57.2:8080/api/Category/save',
                 type : 'POST',
                 dataType: 'json',
                 success : function(json, status, xhr) {
                     alert("Categoria creada correctamente " + xhr.status);
-                    window.location.reload();      
+                          
                 },
                 error : function(xhr, status) {        
                     alert("Error al crear categoria "+xhr.status) 
@@ -87,7 +87,7 @@ function crearCategoria(){
             });
         }  
     }
-    location.reload();
+    window.location.reload();
 }
 
 function eliminarCategoria(){
@@ -96,16 +96,16 @@ function eliminarCategoria(){
         let data = $("#select-delCategory").val();
         $.ajax({
             contentType:"application/json",
-            url: 'http://localhost:8080/api/Category/'+data,
+            url: 'http://144.22.57.2:8080/api/Category/'+data,
             type:"DELETE",
             dataType:"json",
             success:function(xhr,status){
                 alert("Categoria Borrada !!");
-                window.location.reload();
+               
             }
         })
     }
-    location.reload(); 
+    window.location.reload(); 
 }
 
 function actualizarCategoria(){
@@ -120,16 +120,16 @@ function actualizarCategoria(){
         let dataToSend = JSON.stringify(myData);
         $.ajax({
             contentType:"application/json",
-            url: 'http://localhost:8080/api/Category/update',
+            url: 'http://144.22.57.2:8080/api/Category/update',
             type:"PUT",
             dataType:"json",
             data: dataToSend,
             success:function(josn,xhr,status){
                 alert("Categoria Correctamente Actualizada");
-                window.location.reload();
+                
                 
             }
         })
     }
-       
+    window.location.reload();
 }
